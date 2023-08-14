@@ -1,7 +1,7 @@
 ---
 - hosts: centos1
   tasks:
-    - name: Step #1 - Disable SELinux and Reboot
+    - name: Step #1 - Disable SELinux
       selinux:
         policy: targeted
         state: disabled
@@ -10,3 +10,8 @@
       yum:
         name: httpd
         state: present
+
+    - name: Step #2 - Start Apache
+      service:
+        name: httpd
+        state: started   
